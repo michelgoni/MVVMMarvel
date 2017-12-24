@@ -8,7 +8,12 @@
 
 import Foundation
 
-class Hero {
+struct HeroesIndex: Codable {
+    
+    let superheroes: [Hero]?
+}
+
+class Hero: Codable {
     
     var name: String?
     var photo: String?
