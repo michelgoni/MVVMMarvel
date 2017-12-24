@@ -28,9 +28,12 @@ class MVVMarvelUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testHeroDataAreDisplayed() {
+        let app = XCUIApplication()
+        let table = app.tables.element(boundBy: 0)
+        let spidermanCell = table.cells.element(boundBy: 0)
+        XCTAssert(spidermanCell.staticTexts["Spiderman"].exists)
+        
     }
     
 }
