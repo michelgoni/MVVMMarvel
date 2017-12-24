@@ -14,25 +14,33 @@ class HeroViewModel {
     private var hero: Hero?
    
     var heroName: String? {
-        return hero?.name
+        guard let heroName = hero?.name else {return nil}
+        return heroName
     }
     var heroPhoto: String? {
-        return hero?.photo
+        guard let heroPhoto = hero?.photo else { return nil }
+        return heroPhoto
     }
     var heroRealName: String? {
-        return hero?.realName
+        guard let heroRealName = hero?.realName  else { return nil }
+        return heroRealName
     }
     var heroHeight: String? {
-        return hero?.height
+        guard let heroHeight = hero?.height else { return nil }
+        return heroHeight
     }
     var heroPower: String? {
-        return hero?.power
+        guard let heroPower = hero?.power else { return nil }
+        return heroPower
     }
     var heroAbilities: String? {
-        return hero?.abilities
+        
+        guard let heroAbilities = hero?.abilities else { return nil }
+        return heroAbilities
     }
     var heroGroups: String? {
-        return hero?.groups
+        guard let heroGroups = hero?.groups else { return nil }
+        return heroGroups
     }
     
     init(hero: Hero) {
