@@ -13,36 +13,34 @@ class Service {
 enum MyError: Error {
         case FoundNil(String)
 }
-    
-    func makeGetCall() {
-        // Set up the URL request
+typealias HeroAlias = (([HeroViewModel]?) -> Void)
+    func makeGetCall(completion: @escaping HeroAlias){
+     
+        var arrayHeroModel = [HeroViewModel] ()
+       
         let todoEndpoint: String = "https://api.myjson.com/bins/bvyob"
         guard let url = URL(string: todoEndpoint) else {
             print("Error: cannot create URL")
             return
         }
-        
-        
-        // make the request
         let task = URLSession(configuration: URLSessionConfiguration.default).dataTask(with: URLRequest(url: url)) {
             (data, response, error) in
-            // check for any errors
             guard error == nil else {
-                print("error calling GET on /todos/1")
                 print(error!)
                 return
             }
-            // make sure we got data
             guard let responseData = data else {
                 print("Error: did not receive data")
                 return
             }
-            
             do {
-                guard let myStructDictionary = try? JSONDecoder().decode(HeroesIndex.self, from: responseData) else {
+                guard let heroesIndex = try? JSONDecoder().decode(HeroesIndex.self, from: responseData) else {
                     throw MyError.FoundNil("Somethin´happened decoding")
                 }
-                print(myStructDictionary.superheroes!.first!.abilities!)
+                heroesIndex.superheroes!.forEach{
+                    arrayHeroModel.append(HeroViewModel(hero: $0))
+                }
+                completion(arrayHeroModel)
             } catch  {
                 print("error trying to convert data to JSON")
                 return
