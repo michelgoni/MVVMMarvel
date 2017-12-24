@@ -1,0 +1,6 @@
+framework module Pods_MVVMarvel {
+  umbrella header "Pods-MVVMarvel-umbrella.h"
+
+  export *
+  module * { export * }
+}
