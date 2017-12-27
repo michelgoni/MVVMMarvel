@@ -11,6 +11,7 @@ import UIKit
 class HeroesTableTableViewController: UITableViewController {
 
     var viewModel = [HeroViewModel]()
+    private var dataSource :TableViewDataSource<SourceTableViewCell,HeroViewModel>!
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -18,7 +19,7 @@ class HeroesTableTableViewController: UITableViewController {
         Service().makeGetCall { (heroViewModel) in
             self.viewModel = heroViewModel!
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self.updateDataSource()
             }
         }
         
@@ -28,30 +29,21 @@ class HeroesTableTableViewController: UITableViewController {
         
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func updateDataSource() {
+     
+        dataSource = TableViewDataSource(cellIdentifier: "heroCell", heroes: viewModel, configureCell: { (cell, hero) in
+            cell.heroNameLabel.text = hero.heroName!
+            cell.heroDescriptionLabel.text = hero.heroAbilities!
+        })
+        self.tableView.dataSource = self.dataSource
+        self.tableView.reloadData()
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-       
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return viewModel.count
-    }
+ 
 
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "heroCell", for: indexPath)
-
-        cell.textLabel?.text = viewModel[indexPath.row].heroName
-        return cell
-    }
+  
     
 
 
