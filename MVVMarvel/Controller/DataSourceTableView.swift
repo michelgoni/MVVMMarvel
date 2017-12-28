@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewDataSource<Cell :UITableViewCell,ViewModel> : NSObject, UITableViewDataSource {
+class TableViewDataSource<Cell :UITableViewCell,ViewModel> : NSObject, UITableViewDataSource, UITableViewDelegate {
     
     private var cellIdentifier :String!
     private var heroes :[ViewModel]!
@@ -23,6 +23,10 @@ class TableViewDataSource<Cell :UITableViewCell,ViewModel> : NSObject, UITableVi
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.heroes.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

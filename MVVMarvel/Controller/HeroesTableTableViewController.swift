@@ -26,7 +26,8 @@ class HeroesTableTableViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
     }
 
     
@@ -34,7 +35,7 @@ class HeroesTableTableViewController: UITableViewController {
      
         dataSource = TableViewDataSource(cellIdentifier: "heroCell", heroes: viewModel, configureCell: { (cell, hero) in
             cell.heroNameLabel.text = hero.heroName!
-            cell.heroDescriptionLabel.text = hero.heroAbilities!
+            cell.heroImage.image(fromUrl: hero.heroPhoto!)
         })
         self.tableView.dataSource = self.dataSource
         self.tableView.reloadData()

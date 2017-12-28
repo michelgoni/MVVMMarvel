@@ -11,7 +11,7 @@ import UIKit
 class SourceTableViewCell : UITableViewCell {
     
     @IBOutlet weak var heroNameLabel :UILabel!
-    @IBOutlet weak var heroDescriptionLabel :UILabel!
+    @IBOutlet weak var heroImage: UIImageView!
     
     
 }

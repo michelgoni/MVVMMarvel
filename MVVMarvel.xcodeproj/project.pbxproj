@@ -19,6 +19,7 @@
 		B468F7BF1FEFB73F00B04893 /* HeroViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B468F7BE1FEFB73F00B04893 /* HeroViewModel.swift */; };
 		B468F7C31FEFC43C00B04893 /* HeroesTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B468F7C21FEFC43C00B04893 /* HeroesTableTableViewController.swift */; };
 		B468F7C61FEFCDFD00B04893 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B468F7C51FEFCDFD00B04893 /* Service.swift */; };
+		B47957591FF4F1980097B93A /* UIIMageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47957581FF4F1980097B93A /* UIIMageView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		B468F7BE1FEFB73F00B04893 /* HeroViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroViewModel.swift; sourceTree = "<group>"; };
 		B468F7C21FEFC43C00B04893 /* HeroesTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTableTableViewController.swift; sourceTree = "<group>"; };
 		B468F7C51FEFCDFD00B04893 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		B47957581FF4F1980097B93A /* UIIMageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIIMageView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				B468F7BD1FEFB72D00B04893 /* Model */,
 				B468F7C71FEFCE5000B04893 /* Service */,
 				B4243E761FF2A06900A84D0A /* View */,
+				B479575A1FF4F1F80097B93A /* Extensions */,
 			);
 			path = MVVMarvel;
 			sourceTree = "<group>";
@@ -170,6 +173,14 @@
 				B468F7C51FEFCDFD00B04893 /* Service.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		B479575A1FF4F1F80097B93A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B47957581FF4F1980097B93A /* UIIMageView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +319,7 @@
 			files = (
 				B468F7C31FEFC43C00B04893 /* HeroesTableTableViewController.swift in Sources */,
 				B468F7BF1FEFB73F00B04893 /* HeroViewModel.swift in Sources */,
+				B47957591FF4F1980097B93A /* UIIMageView+Extension.swift in Sources */,
 				B468F7C61FEFCDFD00B04893 /* Service.swift in Sources */,
 				B468F7BC1FEFB5A000B04893 /* Hero.swift in Sources */,
 				B4243E731FF29EC300A84D0A /* DataSourceTableView.swift in Sources */,
