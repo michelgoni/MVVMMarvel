@@ -7,10 +7,15 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import RxDataSources
 
 class HeroesTableTableViewController: UITableViewController {
 
     var viewModel = [HeroViewModel]()
+    var viewModelFomRx = [HeroViewModel]()
+    let disposeBag = DisposeBag()
     private var dataSource :TableViewDataSource<SourceTableViewCell,HeroViewModel>!
     lazy var searchBar:UISearchBar = UISearchBar()
     
@@ -30,8 +35,23 @@ class HeroesTableTableViewController: UITableViewController {
         setUpTableView()
         setUpView()
         setUpSearchBar()
+        setUpBindings()
     }
 
+    private func setUpBindings() {
+    
+        searchBar.rx.text
+        .orEmpty
+        .subscribe(onNext: { [unowned self] query in // Here we will be notified of every new value
+                print(query)
+            
+            self.viewModelFomRx = self.viewModel.filter{ ($0.heroName?.hasPrefix(query))!}
+                 print(self.viewModelFomRx)
+                self.tableView.reloadData() // And reload table view data.
+            })
+            .disposed(by: disposeBag)
+    }
+    
     private func setUpTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
@@ -47,11 +67,13 @@ class HeroesTableTableViewController: UITableViewController {
     }
     
   private func updateDataSource() {
+    
+    dataSource = TableViewDataSource(cellIdentifier: "heroCell", heroes: viewModel, configureCell: { (cell, hero) in
+        cell.heroNameLabel.text = hero.heroName!
+        cell.heroImage.image(fromUrl: hero.heroPhoto!)
+    })
      
-        dataSource = TableViewDataSource(cellIdentifier: "heroCell", heroes: viewModel, configureCell: { (cell, hero) in
-            cell.heroNameLabel.text = hero.heroName!
-            cell.heroImage.image(fromUrl: hero.heroPhoto!)
-        })
+    
         self.tableView.dataSource = self.dataSource
         self.tableView.reloadData()
     }
