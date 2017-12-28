@@ -12,6 +12,7 @@ class HeroesTableTableViewController: UITableViewController {
 
     var viewModel = [HeroViewModel]()
     private var dataSource :TableViewDataSource<SourceTableViewCell,HeroViewModel>!
+    lazy var searchBar:UISearchBar = UISearchBar()
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -22,17 +23,30 @@ class HeroesTableTableViewController: UITableViewController {
                 self.updateDataSource()
             }
         }
-        
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
-        self.title = "Super Heroes"
+        setUpTableView()
+        setUpView()
+        setUpSearchBar()
     }
 
+    private func setUpTableView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = UITableViewAutomaticDimension
+        title = "Super Heroes"
+    }
     
-    func updateDataSource() {
+   private func setUpSearchBar() {
+        searchBar.placeholder = "Search some Superhero"
+        navigationItem.titleView = searchBar
+    }
+    private func setUpView() {
+        self.searchBar.becomeFirstResponder()
+    }
+    
+  private func updateDataSource() {
      
         dataSource = TableViewDataSource(cellIdentifier: "heroCell", heroes: viewModel, configureCell: { (cell, hero) in
             cell.heroNameLabel.text = hero.heroName!
@@ -41,13 +55,4 @@ class HeroesTableTableViewController: UITableViewController {
         self.tableView.dataSource = self.dataSource
         self.tableView.reloadData()
     }
-
- 
-
-    
-  
-    
-
-
-
 }

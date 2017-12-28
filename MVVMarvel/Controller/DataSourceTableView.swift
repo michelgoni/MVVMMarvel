@@ -32,5 +32,4 @@ class TableViewDataSource<Cell :UITableViewCell,ViewModel> : NSObject, UITableVi
         self.configureCell(cell,hero)
         return cell
     }
-
 }
