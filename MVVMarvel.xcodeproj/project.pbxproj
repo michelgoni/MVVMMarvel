@@ -20,6 +20,7 @@
 		B468F7C31FEFC43C00B04893 /* HeroesTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B468F7C21FEFC43C00B04893 /* HeroesTableTableViewController.swift */; };
 		B468F7C61FEFCDFD00B04893 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = B468F7C51FEFCDFD00B04893 /* Service.swift */; };
 		B47957591FF4F1980097B93A /* UIIMageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47957581FF4F1980097B93A /* UIIMageView+Extension.swift */; };
+		B479575C1FF4F5F50097B93A /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B479575B1FF4F5F50097B93A /* RoundImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		B468F7C21FEFC43C00B04893 /* HeroesTableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroesTableTableViewController.swift; sourceTree = "<group>"; };
 		B468F7C51FEFCDFD00B04893 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		B47957581FF4F1980097B93A /* UIIMageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIIMageView+Extension.swift"; sourceTree = "<group>"; };
+		B479575B1FF4F5F50097B93A /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 		B4243E761FF2A06900A84D0A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B479575B1FF4F5F50097B93A /* RoundImageView.swift */,
 				B468F7911FEFB58800B04893 /* Main.storyboard */,
 				B4243E741FF2A01100A84D0A /* HeroTableViewCell.swift */,
 			);
@@ -317,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B479575C1FF4F5F50097B93A /* RoundImageView.swift in Sources */,
 				B468F7C31FEFC43C00B04893 /* HeroesTableTableViewController.swift in Sources */,
 				B468F7BF1FEFB73F00B04893 /* HeroViewModel.swift in Sources */,
 				B47957591FF4F1980097B93A /* UIIMageView+Extension.swift in Sources */,

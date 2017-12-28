@@ -28,6 +28,7 @@ class HeroesTableTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = UITableViewAutomaticDimension
+        self.title = "Super Heroes"
     }
 
     

@@ -13,5 +13,5 @@ class SourceTableViewCell : UITableViewCell {
     @IBOutlet weak var heroNameLabel :UILabel!
     @IBOutlet weak var heroImage: UIImageView!
     
-    
+   
 }
