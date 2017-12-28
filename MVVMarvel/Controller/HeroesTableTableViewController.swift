@@ -11,6 +11,8 @@ import UIKit
 class HeroesTableTableViewController: UITableViewController {
 
     var viewModel = [HeroViewModel]()
+    private var dataSource :TableViewDataSource<SourceTableViewCell,HeroViewModel>!
+    lazy var searchBar:UISearchBar = UISearchBar()
     
     override func viewWillAppear(_ animated: Bool) {
         
@@ -18,42 +20,39 @@ class HeroesTableTableViewController: UITableViewController {
         Service().makeGetCall { (heroViewModel) in
             self.viewModel = heroViewModel!
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self.updateDataSource()
             }
         }
-        
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setUpTableView()
+        setUpView()
+        setUpSearchBar()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-       
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return viewModel.count
-    }
-
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "heroCell", for: indexPath)
-
-        cell.textLabel?.text = viewModel[indexPath.row].heroName
-        return cell
+    private func setUpTableView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = UITableViewAutomaticDimension
+        title = "Super Heroes"
     }
     
-
-
-
+   private func setUpSearchBar() {
+        searchBar.placeholder = "Search some Superhero"
+        navigationItem.titleView = searchBar
+    }
+    private func setUpView() {
+        self.searchBar.becomeFirstResponder()
+    }
+    
+  private func updateDataSource() {
+     
+        dataSource = TableViewDataSource(cellIdentifier: "heroCell", heroes: viewModel, configureCell: { (cell, hero) in
+            cell.heroNameLabel.text = hero.heroName!
+            cell.heroImage.image(fromUrl: hero.heroPhoto!)
+        })
+        self.tableView.dataSource = self.dataSource
+        self.tableView.reloadData()
+    }
 }

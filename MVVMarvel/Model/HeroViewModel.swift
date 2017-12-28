@@ -12,6 +12,7 @@ import Foundation
 class HeroViewModel {
     
     private var hero: Hero?
+    var bindToSourceViewModel: (() -> ()) = {}
    
     var heroName: String? {
         guard let heroName = hero?.name else {return nil}

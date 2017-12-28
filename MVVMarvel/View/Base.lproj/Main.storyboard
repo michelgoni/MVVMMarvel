@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aJQ-BL-oTh">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="AvenirNext.ttc">
+            <string>AvenirNext-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Heroes Table Table View Controller-->
+        <scene sceneID="7Hs-WO-rqx">
+            <objects>
+                <tableViewController id="I9y-zL-tM2" customClass="HeroesTableTableViewController" customModule="MVVMarvel" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jwh-yJ-jna">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="heroCell" rowHeight="100" id="fln-wb-lAp" customClass="SourceTableViewCell" customModule="MVVMarvel" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fln-wb-lAp" id="yiu-BV-6Kv">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Dd5-bI-xxy">
+                                            <rect key="frame" x="111" y="49" width="248" height="20"/>
+                                            <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c1U-xk-bXt" customClass="CustomImageView" customModule="MVVMarvel" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="29" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="dtj-3A-Uni"/>
+                                                <constraint firstAttribute="width" constant="60" id="tCi-ug-XKf"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="30"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Dd5-bI-xxy" secondAttribute="bottom" constant="20" id="0FE-sU-PN1"/>
+                                        <constraint firstAttribute="trailing" secondItem="Dd5-bI-xxy" secondAttribute="trailing" constant="16" id="2ym-Fp-Fvg"/>
+                                        <constraint firstItem="c1U-xk-bXt" firstAttribute="leading" secondItem="yiu-BV-6Kv" secondAttribute="leading" constant="16" id="Dzv-y8-p2N"/>
+                                        <constraint firstItem="Dd5-bI-xxy" firstAttribute="leading" secondItem="c1U-xk-bXt" secondAttribute="trailing" constant="35" id="Olk-gx-EEK"/>
+                                        <constraint firstItem="c1U-xk-bXt" firstAttribute="top" secondItem="yiu-BV-6Kv" secondAttribute="top" constant="29" id="mHG-uQ-WQP"/>
+                                        <constraint firstItem="Dd5-bI-xxy" firstAttribute="top" secondItem="yiu-BV-6Kv" secondAttribute="top" constant="49" id="xoY-2c-wtg"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="heroImage" destination="c1U-xk-bXt" id="lub-GP-fZB"/>
+                                    <outlet property="heroNameLabel" destination="Dd5-bI-xxy" id="tQ0-5f-N6t"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="I9y-zL-tM2" id="yZL-Df-TSc"/>
+                            <outlet property="delegate" destination="I9y-zL-tM2" id="wEt-r3-tof"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="Nla-0z-mqT"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fQT-QR-gNM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="455.19999999999999" y="134.48275862068968"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Hyf-kx-chV">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aJQ-BL-oTh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="gu1-O5-vWe">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="I9y-zL-tM2" kind="relationship" relationship="rootViewController" id="HZL-nL-nEk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bYE-wU-2gF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-278" y="134"/>
+        </scene>
+    </scenes>
+</document>
