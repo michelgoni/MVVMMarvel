@@ -37,6 +37,11 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
         setUpSearchBar()
         setUpBindings()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
 
     private func setUpBindings() {
     
@@ -77,6 +82,7 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
         self.tableView.reloadData()
     }
     
+    //MARK:--UISearchbar delegate
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         switch searchText.isEmpty {
@@ -88,5 +94,9 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
         }
         self.tableView.dataSource = self.dataSource
         self.tableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
     }
 }
