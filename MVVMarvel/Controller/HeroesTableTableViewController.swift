@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class HeroesTableTableViewController: UITableViewController {
+class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate {
 
     var viewModel = [HeroViewModel]()
     var viewModelFomRx = [HeroViewModel]()
@@ -25,7 +25,7 @@ class HeroesTableTableViewController: UITableViewController {
         Service().makeGetCall { (heroViewModel) in
             self.viewModel = heroViewModel!
             DispatchQueue.main.async {
-                self.updateDataSource()
+                self.updateDataSource(withViewModel: self.viewModel)
             }
         }
     }
@@ -43,7 +43,6 @@ class HeroesTableTableViewController: UITableViewController {
         searchBar.rx.text
         .orEmpty
         .subscribe(onNext: { [unowned self] query in // Here we will be notified of every new value
-                print(query)
             
             self.viewModelFomRx = self.viewModel.filter{ ($0.heroName?.hasPrefix(query))!}
                  print(self.viewModelFomRx)
@@ -61,19 +60,32 @@ class HeroesTableTableViewController: UITableViewController {
    private func setUpSearchBar() {
         searchBar.placeholder = "Search some Superhero"
         navigationItem.titleView = searchBar
+        searchBar.delegate = self
     }
     private func setUpView() {
         self.searchBar.becomeFirstResponder()
     }
     
-  private func updateDataSource() {
+    private func updateDataSource(withViewModel viewModel: [HeroViewModel]) {
     
     dataSource = TableViewDataSource(cellIdentifier: "heroCell", heroes: viewModel, configureCell: { (cell, hero) in
         cell.heroNameLabel.text = hero.heroName!
         cell.heroImage.image(fromUrl: hero.heroPhoto!)
     })
-     
+
+        self.tableView.dataSource = self.dataSource
+        self.tableView.reloadData()
+    }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        switch searchText.isEmpty {
+            
+        case true:
+            updateDataSource(withViewModel: viewModel)
+        case false:
+            updateDataSource(withViewModel: viewModelFomRx)
+        }
         self.tableView.dataSource = self.dataSource
         self.tableView.reloadData()
     }
