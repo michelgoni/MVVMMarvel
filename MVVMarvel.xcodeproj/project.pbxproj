@@ -10,6 +10,7 @@
 		52EA7FF829A1E843453DCF5E /* Pods_MVVMarvelTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 746A9B98CD52A2CED4C45A25 /* Pods_MVVMarvelTests.framework */; };
 		85D396B37243E0FE62416E09 /* Pods_MVVMarvelUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 187F3A577FA286970AF1242D /* Pods_MVVMarvelUITests.framework */; };
 		A5E0EBCD9FB81F5305E4F0A6 /* Pods_MVVMarvel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 87F13EE2AAF58D8BCC1172CF /* Pods_MVVMarvel.framework */; };
+		B417CC4B1FF64B6A00D4734E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B417CC4A1FF64B6A00D4734E /* Constants.swift */; };
 		B4243E731FF29EC300A84D0A /* DataSourceTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4243E721FF29EC300A84D0A /* DataSourceTableView.swift */; };
 		B4243E751FF2A01100A84D0A /* HeroTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4243E741FF2A01100A84D0A /* HeroTableViewCell.swift */; };
 		B468F78E1FEFB58800B04893 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B468F78D1FEFB58800B04893 /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 		746A9B98CD52A2CED4C45A25 /* Pods_MVVMarvelTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMarvelTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		805C36688E0FB1CCEB543E12 /* Pods-MVVMarvel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMarvel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMarvel/Pods-MVVMarvel.debug.xcconfig"; sourceTree = "<group>"; };
 		87F13EE2AAF58D8BCC1172CF /* Pods_MVVMarvel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVVMarvel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B417CC4A1FF64B6A00D4734E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B4243E721FF29EC300A84D0A /* DataSourceTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceTableView.swift; sourceTree = "<group>"; };
 		B4243E741FF2A01100A84D0A /* HeroTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroTableViewCell.swift; sourceTree = "<group>"; };
 		B468F78A1FEFB58800B04893 /* MVVMarvel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVMarvel.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +115,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B417CC4C1FF64C2200D4734E /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				B417CC4A1FF64B6A00D4734E /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		B4243E761FF2A06900A84D0A /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +167,7 @@
 				B468F7C71FEFCE5000B04893 /* Service */,
 				B4243E761FF2A06900A84D0A /* View */,
 				B479575A1FF4F1F80097B93A /* Extensions */,
+				B417CC4C1FF64C2200D4734E /* Constants */,
 			);
 			path = MVVMarvel;
 			sourceTree = "<group>";
@@ -537,6 +548,7 @@
 				B468F7BF1FEFB73F00B04893 /* HeroViewModel.swift in Sources */,
 				B47957591FF4F1980097B93A /* UIIMageView+Extension.swift in Sources */,
 				B468F7C61FEFCDFD00B04893 /* Service.swift in Sources */,
+				B417CC4B1FF64B6A00D4734E /* Constants.swift in Sources */,
 				B468F7BC1FEFB5A000B04893 /* Hero.swift in Sources */,
 				B4243E731FF29EC300A84D0A /* DataSourceTableView.swift in Sources */,
 				B4243E751FF2A01100A84D0A /* HeroTableViewCell.swift in Sources */,

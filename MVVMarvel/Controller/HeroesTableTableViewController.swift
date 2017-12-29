@@ -42,11 +42,11 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
     
         searchBar.rx.text
         .orEmpty
-        .subscribe(onNext: { [unowned self] query in // Here we will be notified of every new value
+        .subscribe(onNext: { [unowned self] query in 
             
             self.viewModelFomRx = self.viewModel.filter{ ($0.heroName?.hasPrefix(query))!}
-                 print(self.viewModelFomRx)
-                self.tableView.reloadData() // And reload table view data.
+            
+                self.tableView.reloadData()
             })
             .disposed(by: disposeBag)
     }
@@ -54,11 +54,11 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
     private func setUpTableView() {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
-        title = "Super Heroes"
+        title = Titles.tableViewTitle
     }
     
    private func setUpSearchBar() {
-        searchBar.placeholder = "Search some Superhero"
+        searchBar.placeholder = Titles.searchBarPlaceholder
         navigationItem.titleView = searchBar
         searchBar.delegate = self
     }
@@ -68,7 +68,7 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
     
     private func updateDataSource(withViewModel viewModel: [HeroViewModel]) {
     
-    dataSource = TableViewDataSource(cellIdentifier: "heroCell", heroes: viewModel, configureCell: { (cell, hero) in
+    dataSource = TableViewDataSource(cellIdentifier: Cells.cell, heroes: viewModel, configureCell: { (cell, hero) in
         cell.heroNameLabel.text = hero.heroName!
         cell.heroImage.image(fromUrl: hero.heroPhoto!)
     })
