@@ -99,10 +99,10 @@
             </objects>
             <point key="canvasLocation" x="-278" y="134"/>
         </scene>
-        <!--View Controller-->
+        <!--Heroe Detail View Controller-->
         <scene sceneID="WSl-9N-pGD">
             <objects>
-                <viewController storyboardIdentifier="HerbDetailsViewController" id="7bb-dZ-P6B" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HeroeDetailsViewController" id="7bb-dZ-P6B" customClass="HeroeDetailViewController" customModule="MVVMarvel" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="z90-k7-aTW"/>
                         <viewControllerLayoutGuide type="bottom" id="loS-Xb-OVZ"/>

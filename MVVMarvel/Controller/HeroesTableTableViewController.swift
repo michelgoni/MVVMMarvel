@@ -16,6 +16,7 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
     var viewModel = [HeroViewModel]()
     var viewModelFomRx = [HeroViewModel]()
     let disposeBag = DisposeBag()
+    let transition = Animator()
     private var dataSource :TableViewDataSource<SourceTableViewCell,HeroViewModel>!
     lazy var searchBar:UISearchBar = UISearchBar()
     
@@ -96,7 +97,22 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
         self.tableView.reloadData()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let heroeDetails = storyboard!.instantiateViewController(withIdentifier: "HeroeDetailsViewController") as! HeroeDetailViewController
+        heroeDetails.transitioningDelegate = self
+        present(heroeDetails, animated: true, completion: nil)
+    }
+}
+
+extension HeroesTableTableViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+     
+        return nil
     }
 }
