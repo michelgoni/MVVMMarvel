@@ -67,7 +67,6 @@
                                 <connections>
                                     <outlet property="heroImage" destination="c1U-xk-bXt" id="lub-GP-fZB"/>
                                     <outlet property="heroNameLabel" destination="Dd5-bI-xxy" id="tQ0-5f-N6t"/>
-                                    <segue destination="7bb-dZ-P6B" kind="presentation" id="yYQ-qh-xPe"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
