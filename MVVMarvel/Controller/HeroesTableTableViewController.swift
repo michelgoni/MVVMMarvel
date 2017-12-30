@@ -17,6 +17,7 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
     var viewModelFomRx = [HeroViewModel]()
     let disposeBag = DisposeBag()
     let transition = Animator()
+    var selectedImage: UIImageView?
     private var dataSource :TableViewDataSource<SourceTableViewCell,HeroViewModel>!
     lazy var searchBar:UISearchBar = UISearchBar()
     
@@ -99,20 +100,26 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let heroeDetails = storyboard!.instantiateViewController(withIdentifier: "HeroeDetailsViewController") as! HeroeDetailViewController
+        
+        selectedImage = tableView.getSelectedImage(indexPath: indexPath)
         heroeDetails.transitioningDelegate = self
         present(heroeDetails, animated: true, completion: nil)
     }
+    
 }
 
 extension HeroesTableTableViewController: UIViewControllerTransitioningDelegate {
     
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
+        transition.originFrame = (selectedImage?.superview?.convert((selectedImage?.frame)!, to: nil))!
+        selectedImage!.isHidden = true
         return transition
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
      
+        selectedImage!.isHidden = false
         return nil
     }
 }
