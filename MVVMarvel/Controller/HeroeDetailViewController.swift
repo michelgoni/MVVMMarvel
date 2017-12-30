@@ -10,4 +10,12 @@ import UIKit
 
 class HeroeDetailViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(actionClose(_:))))
+    }
+    
+    @objc func actionClose(_ tap: UITapGestureRecognizer) {
+        presentingViewController?.dismiss(animated: true, completion: nil)
+    }
 }

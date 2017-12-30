@@ -172,7 +172,7 @@
 				B4243E761FF2A06900A84D0A /* View */,
 				B479575A1FF4F1F80097B93A /* Extensions */,
 				B417CC4C1FF64C2200D4734E /* Constants */,
-				B417CC4D1FF65A9700D4734E /* Animator.swift */,
+				B48D2C5C1FF7985800E9626F /* Animator */,
 			);
 			path = MVVMarvel;
 			sourceTree = "<group>";
@@ -228,6 +228,14 @@
 				B47957581FF4F1980097B93A /* UIIMageView+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B48D2C5C1FF7985800E9626F /* Animator */ = {
+			isa = PBXGroup;
+			children = (
+				B417CC4D1FF65A9700D4734E /* Animator.swift */,
+			);
+			path = Animator;
 			sourceTree = "<group>";
 		};
 		FFD12C530C8FB1F4EA7C75EF /* Pods */ = {
