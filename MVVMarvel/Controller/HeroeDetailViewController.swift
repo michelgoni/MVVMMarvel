@@ -10,6 +10,7 @@ import UIKit
 
 class HeroeDetailViewController: UIViewController, UIViewControllerTransitioningDelegate {
     
+    @IBOutlet weak var containerView: UIView!
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(actionClose(_:))))

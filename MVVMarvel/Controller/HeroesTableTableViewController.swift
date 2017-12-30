@@ -114,12 +114,14 @@ extension HeroesTableTableViewController: UIViewControllerTransitioningDelegate 
         
         transition.originFrame = (selectedImage?.superview?.convert((selectedImage?.frame)!, to: nil))!
         selectedImage!.isHidden = true
+         transition.presenting = true
         return transition
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
      
         selectedImage!.isHidden = false
-        return nil
+         transition.presenting = false
+        return transition
     }
 }
