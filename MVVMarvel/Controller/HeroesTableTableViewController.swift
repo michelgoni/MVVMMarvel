@@ -18,6 +18,7 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
     let disposeBag = DisposeBag()
     let transition = Animator()
     var selectedImage: UIImageView?
+    var searchIsActive = true
     private var dataSource :TableViewDataSource<SourceTableViewCell,HeroViewModel>!
     lazy var searchBar:UISearchBar = UISearchBar()
     
@@ -94,6 +95,7 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
             
         case false:
             updateDataSource(withViewModel: viewModelFomRx)
+            searchIsActive = false
             
         }
         reloadHeroesTableView()
@@ -109,7 +111,15 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
         
         let heroeDetails = storyboard!.instantiateViewController(withIdentifier: StoryBoardsIdentifiers.heroeDetailsViewController) as! HeroeDetailViewController
         selectedImage = tableView.getSelectedImage(indexPath: indexPath)
-        heroeDetails.hero = viewModel[indexPath.row]
+        
+        switch searchIsActive {
+        case false:
+            heroeDetails.hero = viewModelFomRx[indexPath.row]
+            searchIsActive = true
+        default:
+            heroeDetails.hero = viewModel[indexPath.row]
+        }
+        
         heroeDetails.transitioningDelegate = self
         present(heroeDetails, animated: true, completion: nil)
     }
