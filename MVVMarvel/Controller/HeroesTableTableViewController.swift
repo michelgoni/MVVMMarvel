@@ -35,15 +35,17 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTableView()
-        setUpView()
         setUpSearchBar()
         setUpBindings()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
+  
 
     private func setUpBindings() {
     
@@ -69,10 +71,7 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
         navigationItem.titleView = searchBar
         searchBar.delegate = self
     }
-    private func setUpView() {
-        self.searchBar.becomeFirstResponder()
-    }
-    
+   
     private func updateDataSource(withViewModel viewModel: [HeroViewModel]) {
     
     dataSource = TableViewDataSource(cellIdentifier: Cells.cell, heroes: viewModel, configureCell: { (cell, hero) in
@@ -80,23 +79,31 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
         cell.heroImage.image(fromUrl: hero.heroPhoto!)
     })
 
-        self.tableView.dataSource = self.dataSource
-        self.tableView.reloadData()
+        reloadHeroesTableView()
     }
     
     //MARK:--UISearchbar delegate
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
+        self.searchBar.becomeFirstResponder()
         switch searchText.isEmpty {
-            
         case true:
             updateDataSource(withViewModel: viewModel)
+             self.searchBar.resignFirstResponder()
+            
         case false:
             updateDataSource(withViewModel: viewModelFomRx)
+            
         }
-        self.tableView.dataSource = self.dataSource
-        self.tableView.reloadData()
+        reloadHeroesTableView()
+       
     }
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.searchBar.endEditing(true)
+        self.searchBar.resignFirstResponder()
+    }
+   
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -105,6 +112,11 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
         heroeDetails.hero = viewModel[indexPath.row]
         heroeDetails.transitioningDelegate = self
         present(heroeDetails, animated: true, completion: nil)
+    }
+    
+    private func reloadHeroesTableView() {
+        self.tableView.dataSource = self.dataSource
+        self.tableView.reloadData()
     }
 }
 
