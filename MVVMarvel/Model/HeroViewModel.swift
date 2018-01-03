@@ -44,6 +44,11 @@ class HeroViewModel {
         return heroGroups
     }
     
+    var heroesDescription : String? {
+        guard let heroeName = hero?.name, let heroeRealName = hero?.realName, let heroePower = hero?.abilities  else { return nil }
+        return "\(heroeName) real name is \(heroeRealName). As abilities, \(heroePower) "
+    }
+    
     init(hero: Hero) {
         self.hero = hero
     }

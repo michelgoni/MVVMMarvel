@@ -19,7 +19,6 @@ extension UITableView {
     func getSelectedImage( indexPath: IndexPath) -> UIImageView {
         
         let cell =  dequeueReusableCell(withIdentifier: Cells.cell, for: indexPath) as! SourceTableViewCell
-        
         return cell.heroImage
     }
 }

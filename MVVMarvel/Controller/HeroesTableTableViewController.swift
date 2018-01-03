@@ -99,13 +99,13 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let heroeDetails = storyboard!.instantiateViewController(withIdentifier: "HeroeDetailsViewController") as! HeroeDetailViewController
         
+        let heroeDetails = storyboard!.instantiateViewController(withIdentifier: StoryBoardsIdentifiers.heroeDetailsViewController) as! HeroeDetailViewController
         selectedImage = tableView.getSelectedImage(indexPath: indexPath)
+        heroeDetails.hero = viewModel[indexPath.row]
         heroeDetails.transitioningDelegate = self
         present(heroeDetails, animated: true, completion: nil)
     }
-    
 }
 
 extension HeroesTableTableViewController: UIViewControllerTransitioningDelegate {

@@ -16,3 +16,7 @@ struct Titles {
 struct Cells {
     static let cell = "heroCell"
 }
+
+struct StoryBoardsIdentifiers {
+    static let heroeDetailsViewController = "HeroeDetailsViewController"
+}
