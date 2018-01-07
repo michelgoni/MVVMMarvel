@@ -12,14 +12,24 @@ class SourceTableViewCell : UITableViewCell {
     
     @IBOutlet weak var heroNameLabel :UILabel!
     @IBOutlet weak var heroImage: UIImageView!
+    
+    
 }
 
 extension UITableView {
     
     func getSelectedImage( indexPath: IndexPath) -> UIImageView {
         
+
         let cell =  dequeueReusableCell(withIdentifier: Cells.cell, for: indexPath) as! SourceTableViewCell
         return cell.heroImage
+    }
+    
+    func getSelectedImageFrame ( indexPath: IndexPath) -> CGRect {
+        
+        let rectOfCell = rectForRow(at: indexPath)
+       
+        return convert(rectOfCell, to: self.superview)
     }
     
     
