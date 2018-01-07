@@ -12,7 +12,6 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     var originFrame = CGRect.zero
     var presenting = true
    
-    
     func transitionDuration(
         using transitionContext: UIViewControllerContextTransitioning?
         ) -> TimeInterval {
@@ -20,7 +19,7 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        //1) Set up transition
+        
         let containerView = transitionContext.containerView
         let toView = transitionContext.view(forKey: .to)!
         let hero = presenting ? toView : transitionContext.view(forKey: .from)!
@@ -51,7 +50,6 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
             heroeDetailViewController.containerView.alpha = 0.0
         }
 
-        
         UIView.animate(
             withDuration: duration,
             delay: 0.0,
@@ -59,21 +57,22 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
             initialSpringVelocity: 0.0,
             animations: {
                 hero.transform = self.presenting ? .identity : scaleFactor
+                hero.alpha = self.presenting ? 1.0 : 0.0
                 hero.center = CGPoint(x: finalFrame.midX,y: finalFrame.midY)
                 heroeDetailViewController.containerView.alpha = self.presenting ? 1.0 : 0.0
+                
         },
             completion: {_ in
                
                 if !self.presenting {
+                    
                     let navigationVC = transitionContext.viewController(forKey: .to) as! UINavigationController
                     
                     if  let tableVC = navigationVC.viewControllers[0] as? HeroesTableTableViewController {
                         tableVC.selectedImage?.isHidden = false
                     }
-                    
                 }
                 transitionContext.completeTransition(true)
-        }
-        )
+        })
     }
 }
