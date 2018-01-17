@@ -11,12 +11,15 @@ import Foundation
 protocol EndPoint {
     
     var base: String {get}
+    var path: String { get }
 }
 
 extension EndPoint {
     
     var urlComponents: URLComponents {
-        return URLComponents(string: base)!
+        var components = URLComponents(string: base)!
+        components.path = path
+        return components
     }
     
     var request: URLRequest {
