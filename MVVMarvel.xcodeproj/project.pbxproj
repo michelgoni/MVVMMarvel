@@ -28,6 +28,7 @@
 		B47957591FF4F1980097B93A /* UIIMageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47957581FF4F1980097B93A /* UIIMageView+Extension.swift */; };
 		B479575C1FF4F5F50097B93A /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B479575B1FF4F5F50097B93A /* RoundImageView.swift */; };
 		B4B8E896200FDD9E002A49FA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B8E895200FDD9E002A49FA /* Result.swift */; };
+		B4B8E898200FDE7D002A49FA /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B8E897200FDE7D002A49FA /* Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,7 @@
 		B47957581FF4F1980097B93A /* UIIMageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIIMageView+Extension.swift"; sourceTree = "<group>"; };
 		B479575B1FF4F5F50097B93A /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
 		B4B8E895200FDD9E002A49FA /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		B4B8E897200FDE7D002A49FA /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		E9E3804AD47CB1814F6569C7 /* Pods-MVVMarvel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVVMarvel.release.xcconfig"; path = "Pods/Target Support Files/Pods-MVVMarvel/Pods-MVVMarvel.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -221,6 +223,7 @@
 			children = (
 				B468F7C51FEFCDFD00B04893 /* Service.swift */,
 				B4B8E895200FDD9E002A49FA /* Result.swift */,
+				B4B8E897200FDE7D002A49FA /* Endpoint.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4B8E898200FDE7D002A49FA /* Endpoint.swift in Sources */,
 				B479575C1FF4F5F50097B93A /* RoundImageView.swift in Sources */,
 				B4B8E896200FDD9E002A49FA /* Result.swift in Sources */,
 				B468F7C31FEFC43C00B04893 /* HeroesTableTableViewController.swift in Sources */,
