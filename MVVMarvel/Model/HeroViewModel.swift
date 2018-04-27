@@ -13,6 +13,10 @@ class HeroViewModel {
     
     private var hero: Hero?
     var bindToSourceViewModel: (() -> ()) = {}
+    
+    init(hero: Hero) {
+        self.hero = hero
+    }
    
     var heroName: String? {
         guard let heroName = hero?.name else {return nil}
@@ -49,7 +53,5 @@ class HeroViewModel {
         return "\(heroeName) real name is \(heroeRealName). As abilities, \(heroeAbilities) and as power \(heroPower)"
     }
     
-    init(hero: Hero) {
-        self.hero = hero
-    }
+   
 }

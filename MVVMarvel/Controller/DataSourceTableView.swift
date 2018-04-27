@@ -8,13 +8,13 @@
 
 import UIKit
 
-class TableViewDataSource<Cell :UITableViewCell,ViewModel> : NSObject, UITableViewDataSource {
+class TableViewDataSource<Cell :UITableViewCell,T> : NSObject, UITableViewDataSource, UITableViewDelegate {
     
     private var cellIdentifier :String!
-    private var heroes :[ViewModel]!
-    var configureCell :(Cell,ViewModel) -> ()
+    private var heroes :[T]!
+    var configureCell :(Cell,T) -> ()
     
-    init(cellIdentifier :String, heroes :[ViewModel], configureCell: @escaping (Cell,ViewModel) -> ()) {
+    init(cellIdentifier :String, heroes :[T], configureCell: @escaping (Cell,T) -> ()) {
         
         self.cellIdentifier = cellIdentifier
         self.heroes = heroes
@@ -31,6 +31,11 @@ class TableViewDataSource<Cell :UITableViewCell,ViewModel> : NSObject, UITableVi
         let hero = self.heroes[indexPath.row]
         self.configureCell(cell,hero)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
     }
     
    
