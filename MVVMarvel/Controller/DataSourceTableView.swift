@@ -28,8 +28,7 @@ class TableViewDataSource<Cell :UITableViewCell,T> : NSObject, UITableViewDataSo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath) as! Cell
-        let hero = self.heroes[indexPath.row]
-        self.configureCell(cell,hero)
+        self.configureCell(tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath) as! Cell,self.heroes[indexPath.row])
         return cell
     }
     

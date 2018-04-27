@@ -76,7 +76,7 @@ class HeroesTableTableViewController: UITableViewController, UISearchBarDelegate
    
     private func updateDataSource(withViewModel viewModel: [HeroViewModel]) {
     
-    dataSource = TableViewDataSource(cellIdentifier: Cells.cell, heroes: viewModel, configureCell: { (cell, hero) in
+    dataSource = TableViewDataSource(cellIdentifier: Cells.cell, heroes: viewModel, configureCell: { cell, hero in
         cell.heroNameLabel.text = hero.heroName!
         cell.heroImage.image(fromUrl: hero.heroPhoto!)
     })
